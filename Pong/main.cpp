@@ -1,6 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 
+#include <cstdlib>
+#include <ctime>
+
 
 int main()
 {
@@ -8,6 +11,8 @@ int main()
     
 	Game game(window);
 	sf::Clock clock;
+
+	std::srand(std::time(NULL));
 
     while (window.isOpen())
     {

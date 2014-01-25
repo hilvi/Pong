@@ -1,17 +1,21 @@
-﻿Build started 23.1.2014 19:02:35.
-     1>Project "Z:\git\Pong\Pong\Pong.vcxproj" on node 2 (Build target(s)).
+﻿Build started 25.1.2014 20:43:08.
+     1>Project "C:\Users\Erkki\Documents\git\Pong\Pong\Pong.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"Z:\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp
-         Game.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"C:\Users\Erkki\Documents\git\Pong\SFML-2.1\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt EnemyPaddle.cpp
+         EnemyPaddle.cpp
+     1>c:\users\erkki\documents\git\pong\pong\enemypaddle.cpp(13): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
        Link:
-         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"Z:\git\Pong\Debug\Pong.exe" /INCREMENTAL /NOLOGO /LIBPATH:"Z:\SFML-2.1\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"Z:\git\Pong\Debug\Pong.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"Z:\git\Pong\Debug\Pong.lib" /MACHINE:X86 Debug\Ball.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Erkki\Documents\git\Pong\Debug\Pong.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Erkki\Documents\git\Pong\SFML-2.1\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Erkki\Documents\git\Pong\Debug\Pong.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Erkki\Documents\git\Pong\Debug\Pong.lib" /MACHINE:X86 Debug\Ball.obj
+         Debug\EnemyPaddle.obj
          Debug\Game.obj
          Debug\GameObject.obj
+         Debug\GUI.obj
          Debug\main.obj
          Debug\Paddle.obj
-         Pong.vcxproj -> Z:\git\Pong\Debug\Pong.exe
-     1>Done Building Project "Z:\git\Pong\Pong\Pong.vcxproj" (Build target(s)).
+         Debug\Wall.obj
+         Pong.vcxproj -> C:\Users\Erkki\Documents\git\Pong\Debug\Pong.exe
+     1>Done Building Project "C:\Users\Erkki\Documents\git\Pong\Pong\Pong.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.06
+Time Elapsed 00:00:01.35

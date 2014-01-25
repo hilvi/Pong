@@ -3,6 +3,7 @@
 
 Paddle::Paddle(void)
 {
+	name = "Paddle";
 	width = 10;
 	height = 30;
 
@@ -14,15 +15,17 @@ Paddle::Paddle(void)
 	m_vertices[2] = sf::Vector2f(width, height);
 	m_vertices[3] = sf::Vector2f(0, height);
 
-	speed = 200;
+	speed = 150;
 }
 
 void Paddle::update(float deltaTime) {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		move(0, -speed*deltaTime);
+		if (this->getTop() - speed*deltaTime > 20)
+			move(0, -speed*deltaTime);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		move(0, speed*deltaTime);
+		if (this->getBottom() + speed*deltaTime < 380)
+			move(0, speed*deltaTime);
 	}
 }
 

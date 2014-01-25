@@ -10,7 +10,7 @@ public:
 	virtual void update(float deltaTime);
 	float getWidth();
 	float getHeight();
-
+	std::string getName();
 	float getLeft();
 	float getTop();
 	float getRight();

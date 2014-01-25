@@ -40,6 +40,11 @@ float GameObject::getRight() {
 }
 
 
+std::string GameObject::getName()
+{
+	return name;
+}
+
 void GameObject::onCollision(GameObject *collider)
 {
 

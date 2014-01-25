@@ -1,6 +1,6 @@
 #include "Ball.h"
 #include <cmath>
-
+#include <cstdlib>
 
 Ball::Ball(void)
 {
@@ -15,27 +15,42 @@ Ball::Ball(void)
 	m_vertices[2] = sf::Vector2f(width, height);
 	m_vertices[3] = sf::Vector2f(0, height);
 
-	reset();
+	speed = 150;
+
+	reset(1);
 }
 
 void Ball::update(float deltaTime) {
 	move(velocity.x*deltaTime, velocity.y*deltaTime);
 	if(getPosition().x < 0) {
 		//player won
-		reset();
+		reset(1);
 	}
 	if(getPosition().x > 600) {
 		//enemy won
-		reset();
+		reset(-1);
 	}
 }
 
-void Ball::reset()
+void Ball::onCollision(GameObject *collider)
+{
+	if(collider->getName() == "Paddle") {
+		velocity.x = -velocity.x;
+	} else if(collider->getName() == "Wall") {
+		velocity.y = -velocity.y;
+	}
+}
+
+void Ball::reset(int direction)
 {
 	setPosition(300, 200);
 
-	velocity.x = -100;
-	velocity.y = -20;
+	int x = std::rand() % (int)(speed-100) + 100;
+	int y = std::sqrtf(speed*speed - x*x);
+
+	velocity.x = (float)direction * x;
+	direction = std::rand() % 2 == 0 ? -1 : 1;
+	velocity.y = (float)direction * y;
 }
 
 Ball::~Ball(void)

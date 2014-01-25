@@ -9,8 +9,12 @@ public:
 	Ball(void);
 
 	void update(float deltaTime);
-	void reset();
+	void reset(int direction);
+
+	void onCollision(GameObject *collider);
 
 	~Ball(void);
+private:
+	float speed;
 };
 
