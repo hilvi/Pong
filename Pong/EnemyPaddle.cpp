@@ -10,7 +10,7 @@ EnemyPaddle::EnemyPaddle(Ball *ball) : Paddle()
 void EnemyPaddle::update(float deltaTime)
 {
 	float direction = (ball->getTop() + ball->getBottom()) / 2 - (this->getTop() + this->getBottom()) / 2;
-	direction = direction < 0 ? -1 : 1;
+	direction = direction < 0 ? -1.0f : 1.0f;
 	
 	if (this->getTop() + direction*speed*deltaTime > 20 && this->getBottom() + direction*speed*deltaTime < 380)
 		move(0, direction*speed*deltaTime);

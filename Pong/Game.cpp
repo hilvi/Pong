@@ -41,7 +41,10 @@ void Game::checkCollisions()
 			GameObject *rhs = gameObjects[j];
 
 			if(lhs->getLeft() <= rhs->getRight() && rhs->getLeft() <= lhs->getRight() && lhs->getTop() <= rhs->getBottom() && rhs->getTop() <= lhs->getBottom()) {
-				lhs->onCollision(rhs);	
+				if (lhs->getLastCollision() != rhs) {
+					lhs->onCollision(rhs);
+					lhs->setLastCollision(rhs);
+				}
 			}
 		}
 	}

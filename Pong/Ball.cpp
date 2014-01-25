@@ -15,7 +15,7 @@ Ball::Ball(void)
 	m_vertices[2] = sf::Vector2f(width, height);
 	m_vertices[3] = sf::Vector2f(0, height);
 
-	speed = 150;
+	speed = 200;
 
 	reset(1);
 }
@@ -45,8 +45,8 @@ void Ball::reset(int direction)
 {
 	setPosition(300, 200);
 
-	int x = std::rand() % (int)(speed-100) + 100;
-	int y = std::sqrtf(speed*speed - x*x);
+	int x = std::rand() % (int)(speed/4) + speed*3/4;
+	int y = (int)std::sqrtf(speed*speed - x*x);
 
 	velocity.x = (float)direction * x;
 	direction = std::rand() % 2 == 0 ? -1 : 1;

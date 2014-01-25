@@ -15,6 +15,8 @@ public:
 	float getTop();
 	float getRight();
 	float getBottom();
+	GameObject *getLastCollision();
+	void setLastCollision(GameObject *);
 
 	virtual void onCollision(GameObject *collider);
 
@@ -23,6 +25,7 @@ protected:
 	std::string name;
 	float width, height;
 	sf::VertexArray m_vertices;
+	GameObject *lastCollision;
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };

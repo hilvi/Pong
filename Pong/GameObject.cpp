@@ -39,6 +39,13 @@ float GameObject::getRight() {
 	return getPosition().x + width;
 }
 
+GameObject *GameObject::getLastCollision() {
+	return lastCollision;
+}
+
+void GameObject::setLastCollision(GameObject *collision) {
+	lastCollision = collision;
+}
 
 std::string GameObject::getName()
 {

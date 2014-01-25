@@ -15,7 +15,7 @@ Paddle::Paddle(void)
 	m_vertices[2] = sf::Vector2f(width, height);
 	m_vertices[3] = sf::Vector2f(0, height);
 
-	speed = 150;
+	speed = 100;
 }
 
 void Paddle::update(float deltaTime) {
