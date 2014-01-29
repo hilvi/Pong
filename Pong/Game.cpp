@@ -76,4 +76,7 @@ void Game::addObject(GameObject *obj)
 
 Game::~Game(void)
 {
+	for(unsigned int i = 0; i < gameObjects.size(); i++) {
+		delete gameobjects[i];
+	}
 }
