@@ -18,11 +18,11 @@ Pong::Pong(void)
 	paddle2->setPosition(10, 200);
 	addObject(paddle2);
 
-	Wall *wall1 = new Wall();
+	Wall *wall1 = new Wall("HWall", 600, 10);
 	wall1->setPosition(0, 10);
 	addObject(wall1);
 
-	Wall *wall2 = new Wall();
+	Wall *wall2 = new Wall("HWall", 600, 10);
 	wall2->setPosition(0, 380);
 	addObject(wall2);
 

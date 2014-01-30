@@ -13,6 +13,8 @@ public:
 
 	void onCollision(GameObject *collider);
 
+	void paddleCollision(const sf::Vector2f &paddle);
+
 	~Ball(void);
 private:
 	float speed;

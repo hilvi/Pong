@@ -76,6 +76,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Math.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Pong.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -87,6 +88,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GUI.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Pong.h" />
     <ClInclude Include="Scene.h" />

@@ -1,10 +1,10 @@
 #include "Wall.h"
 
-Wall::Wall(void)
+Wall::Wall(std::string name, float width, float height)
 {
-	name = "Wall";
-	width = 600;
-	height = 10;
+	this->name = name;
+	this->width = width;
+	this->height = height;
 
 	m_vertices.setPrimitiveType(sf::Quads);
 	m_vertices.resize(4);

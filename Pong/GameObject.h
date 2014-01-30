@@ -15,6 +15,7 @@ public:
 	float getTop();
 	float getRight();
 	float getBottom();
+	sf::Vector2f getCenter();
 	GameObject *getLastCollision();
 	void setLastCollision(GameObject *);
 

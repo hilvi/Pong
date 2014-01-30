@@ -23,6 +23,14 @@ float GameObject::getWidth()
 	return width;
 }
 
+sf::Vector2f GameObject::getCenter() {
+	sf::Vector2f center;
+	center.x = (getLeft() + getRight()) / 2;
+	center.y = (getTop() + getBottom()) / 2;
+
+	return center;
+}
+
 float GameObject::getBottom() {
 	return getPosition().y + height;
 }

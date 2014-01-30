@@ -2,6 +2,10 @@
 #include <cmath>
 #include <cstdlib>
 
+#include <iostream>
+
+const float PI=3.14159265358979f;
+
 Ball::Ball(void)
 {
 	width = 10;
@@ -37,11 +41,22 @@ void Ball::onCollision(GameObject *collider)
 	if(getLastCollision() == collider)
 		return;
 	if(collider->getName() == "Paddle") {
-		velocity.x = -velocity.x;
-	} else if(collider->getName() == "Wall") {
+		paddleCollision(collider->getCenter());
+	} else if(collider->getName() == "HWall") {
 		velocity.y = -velocity.y;
 	}
 	setLastCollision(collider);
+}
+
+void Ball::paddleCollision(const sf::Vector2f &paddle) {
+	sf::Vector2f ball = this->getCenter();
+	
+	sf::Vector2f distance = ball - paddle;
+
+	float angle = std::atan2f(distance.y, distance.x);
+
+	velocity.x = std::cosf(angle)*speed;
+	velocity.y = std::sinf(angle)*speed;
 }
 
 void Ball::reset(int direction)
