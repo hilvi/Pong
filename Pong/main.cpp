@@ -11,13 +11,13 @@ int main()
     
 	Game game(window);
 	sf::Clock clock;
+	float accumulator = 0;
+	const float dt = 0.01;
 
 	std::srand(std::time(NULL));
 
     while (window.isOpen())
     {
-		
-
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -25,8 +25,14 @@ int main()
                 window.close();
         }
 
-		game.update(clock.restart().asSeconds());
-		game.draw();
+		accumulator += clock.restart().asSeconds();
+
+		while(accumulator >= dt) {
+			game.update(dt);
+			accumulator -= dt;
+		}
+
+		game.draw();		
     }
 
     return 0;

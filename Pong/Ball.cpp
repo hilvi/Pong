@@ -34,11 +34,14 @@ void Ball::update(float deltaTime) {
 
 void Ball::onCollision(GameObject *collider)
 {
+	if(getLastCollision() == collider)
+		return;
 	if(collider->getName() == "Paddle") {
 		velocity.x = -velocity.x;
 	} else if(collider->getName() == "Wall") {
 		velocity.y = -velocity.y;
 	}
+	setLastCollision(collider);
 }
 
 void Ball::reset(int direction)
@@ -51,6 +54,8 @@ void Ball::reset(int direction)
 	velocity.x = (float)direction * x;
 	direction = std::rand() % 2 == 0 ? -1 : 1;
 	velocity.y = (float)direction * y;
+
+	setLastCollision(NULL);
 }
 
 Ball::~Ball(void)

@@ -6,11 +6,12 @@ GUI::GUI(void)
 	width = 10;
 	height = 10;
 
-	sf::Font font;
-	font.loadFromFile("font.ttf");
-	text.setFont(font);
+	/*sf::Font font;
+	font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
+
 	text.setString("Hello");
-	text.setCharacterSize(25);
+	text.setFont(font);
+	text.setCharacterSize(25);*/
 
 	int blocks = 360 / (int)(height*2) * 4;
 

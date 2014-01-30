@@ -41,10 +41,7 @@ void Game::checkCollisions()
 			GameObject *rhs = gameObjects[j];
 
 			if(lhs->getLeft() <= rhs->getRight() && rhs->getLeft() <= lhs->getRight() && lhs->getTop() <= rhs->getBottom() && rhs->getTop() <= lhs->getBottom()) {
-				if (lhs->getLastCollision() != rhs) {
-					lhs->onCollision(rhs);
-					lhs->setLastCollision(rhs);
-				}
+				lhs->onCollision(rhs);
 			}
 		}
 	}
@@ -77,6 +74,6 @@ void Game::addObject(GameObject *obj)
 Game::~Game(void)
 {
 	for(unsigned int i = 0; i < gameObjects.size(); i++) {
-		delete gameobjects[i];
+		delete gameObjects[i];
 	}
 }
