@@ -53,10 +53,10 @@ void Ball::paddleCollision(const sf::Vector2f &paddle) {
 	
 	sf::Vector2f distance = ball - paddle;
 
-	float angle = std::atan2f(distance.y, distance.x);
+	float angle = atan2f(distance.y, distance.x);
 
-	velocity.x = std::cosf(angle)*speed;
-	velocity.y = std::sinf(angle)*speed;
+	velocity.x = cosf(angle)*speed;
+	velocity.y = sinf(angle)*speed;
 }
 
 void Ball::reset(int direction)
@@ -64,7 +64,7 @@ void Ball::reset(int direction)
 	setPosition(300, 200);
 
 	int x = std::rand() % (int)(speed/4) + speed*3/4;
-	int y = (int)std::sqrtf(speed*speed - x*x);
+	int y = (int)sqrtf(speed*speed - x*x);
 
 	velocity.x = (float)direction * x;
 	direction = std::rand() % 2 == 0 ? -1 : 1;
