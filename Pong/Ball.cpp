@@ -1,8 +1,7 @@
 #include "Ball.h"
 #include <cmath>
 #include <cstdlib>
-
-#include <iostream>
+#include "Game.h"
 
 const float PI=3.14159265358979f;
 
@@ -48,6 +47,11 @@ void Ball::onCollision(GameObject *collider)
         paddleCollision(collider->getCollider()->getCenter());
     } else if(collider->getName() == "HWall") {
         velocity.y = -velocity.y;
+    } else if(collider->getName() == "VWall") {
+      velocity.x = -velocity.x;
+    } else if(collider->getName() == "Brick") {
+      Game::getCurrentScene()->destroyObject(collider);
+      velocity.x = -velocity.x;
     }
     //setLastCollision(collider);
 }
