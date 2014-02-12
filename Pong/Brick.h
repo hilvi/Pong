@@ -24,6 +24,7 @@ class Brick : public Component
 {
 public:
     Brick();
+    void init();
 };
 
 #endif // BRICK_H

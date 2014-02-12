@@ -8,6 +8,8 @@ protected:
 public:
 	Paddle(void);
 	~Paddle(void);
+	
+	void init();
 
 	virtual void update(float deltaTime);
 };

@@ -14,6 +14,8 @@ void Ball::init() {
     width = 10;
     height = 10;
 
+    parent->addCollider(width, height);
+    
     m_vertices.setPrimitiveType(sf::Quads);
     m_vertices.resize(4);
 

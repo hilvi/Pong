@@ -19,8 +19,14 @@
 
 Brick::Brick()
 {
+   
+}
+
+void Brick::init() {
     width = 10;
     height = 200;
+    
+    parent->addCollider(width, height);
 
     m_vertices.setPrimitiveType(sf::Quads);
     m_vertices.resize(4);

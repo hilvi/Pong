@@ -1,7 +1,5 @@
 #include "Scene.h"
 
-#include <iostream>
-
 Scene::Scene(void)
 {
 
@@ -25,7 +23,6 @@ void Scene::clean() {
     for(unsigned int i = 0; i < destroyList.size(); i++) {
         gameObjects.erase(std::remove(gameObjects.begin(), gameObjects.end(), destroyList[i]), gameObjects.end());
 	delete destroyList[i];
-	std::cout << "foo" << std::endl;
     }
     destroyList.clear();
 }
