@@ -1,7 +1,8 @@
 #pragma once
-#include "GameObject.h"
+#include "Component.h"
+
 class GUI :
-	public GameObject
+	public Component
 {
 public:
 	GUI(void);

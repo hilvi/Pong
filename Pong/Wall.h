@@ -1,7 +1,7 @@
-#include "GameObject.h"
+#include "Component.h"
 
 #pragma once
-class Wall : public GameObject
+class Wall : public Component
 {
 public:
 	Wall(std::string name, float width, float height);

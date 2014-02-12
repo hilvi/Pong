@@ -2,18 +2,18 @@
 #include "Ball.h"
 
 
-EnemyPaddle::EnemyPaddle(Ball *ball) : Paddle()
+EnemyPaddle::EnemyPaddle(GameObject *ball) : Paddle()
 {
 	this->ball = ball;
 }
 
 void EnemyPaddle::update(float deltaTime)
 {
-	float direction = (ball->getTop() + ball->getBottom()) / 2 - (this->getTop() + this->getBottom()) / 2;
+	float direction = (ball->getCollider()->getTop() + ball->getCollider()->getBottom()) / 2 - (this->getCollider()->getTop() + this->getCollider()->getBottom()) / 2;
 	direction = direction < 0 ? -1.0f : 1.0f;
 	
-	if (this->getTop() + direction*speed*deltaTime > 20 && this->getBottom() + direction*speed*deltaTime < 380)
-		move(0, direction*speed*deltaTime);
+	if (this->getCollider()->getTop() + direction*speed*deltaTime > 20 && this->getCollider()->getBottom() + direction*speed*deltaTime < 380)
+		parent->move(0, direction*speed*deltaTime);
 }
 
 EnemyPaddle::~EnemyPaddle()

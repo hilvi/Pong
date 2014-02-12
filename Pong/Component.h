@@ -15,39 +15,36 @@
  *
  */
 
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
+#ifndef COMPONENT_H
+#define COMPONENT_H
 
 #include <SFML/Graphics.hpp>
-#include "Collider.h"
-#include <vector>
-#include "Component.h"
+#include "GameObject.h"
 #include <string>
 
-class Component;
+class GameObject;
+class Collider;
 
-class GameObject : public sf::Transformable {
-private:
-  GameObject *parent = NULL;
-  Collider *collider = NULL;
-  std::vector<Component *> components;
-
-protected:
-  std::string name;
+class Component : public sf::Drawable
+{
 public:
-    GameObject(std::string name);
-    GameObject(const GameObject& other);
-    GameObject(std::string name,  GameObject *parent);
-    ~GameObject();
-    
+    Component();
+    Component(const Component& other);
+    ~Component();
     Collider *getCollider();
-    virtual void update(float deltaTime);
-    virtual void draw(sf::RenderWindow &window);
-    std::string getName();
+    virtual void init();
     virtual void onCollision(GameObject *collider);
-    sf::Transform getCombinedTransform();    
-    void addComponent(Component *comp);
-    void addCollider(float width, float height);
+    virtual void update(float deltatime);
+    void setParent(GameObject *parent);
+    float getWidth();
+    float getHeight();
+protected:
+    std::string name;
+    GameObject *parent = NULL;
+    float width, height;
+    sf::VertexArray m_vertices;
+private:
+    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 
-#endif // GAMEOBJECT_H
+#endif // COMPONENT_H

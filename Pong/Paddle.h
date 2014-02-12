@@ -1,7 +1,7 @@
-#include "GameObject.h"
+#include "Component.h"
 
 #pragma once
-class Paddle : public GameObject
+class Paddle : public Component
 {
 protected:
 	int speed;

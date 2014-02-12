@@ -17,6 +17,7 @@ public:
 	void update(float deltaTime);
 	void draw();
 	void checkCollisions();
+	sf::RenderWindow &getWindow();
 
 	~Game(void);
 };

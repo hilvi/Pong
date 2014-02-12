@@ -20,12 +20,12 @@ Paddle::Paddle(void)
 
 void Paddle::update(float deltaTime) {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		if (this->getTop() - speed*deltaTime > 20)
-			move(0, -speed*deltaTime);
+		if (this->getCollider()->getTop() - speed*deltaTime > 20)
+			parent->move(0, -speed*deltaTime);
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		if (this->getBottom() + speed*deltaTime < 380)
-			move(0, speed*deltaTime);
+		if (this->getCollider()->getBottom() + speed*deltaTime < 380)
+			parent->move(0, speed*deltaTime);
 	}
 }
 

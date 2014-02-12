@@ -14,7 +14,7 @@ int main()
 	float accumulator = 0;
 	const float dt = 0.01;
 
-	std::srand(std::time(NULL));
+	srand(std::time(NULL));
 
     while (window.isOpen())
     {
@@ -32,7 +32,7 @@ int main()
 			accumulator -= dt;
 		}
 
-		game.draw();		
+		game.draw();
     }
 
     return 0;

@@ -1,6 +1,8 @@
 #include "Game.h"
 #include "Pong.h"
 
+#include <iostream>
+
 Game::Game(sf::RenderWindow &win) : window(win)
 {
 	currentScene = new Pong();
@@ -10,13 +12,18 @@ void Game::checkCollisions()
 {
 	auto gameObjects = currentScene->getGameObjects();
 	for(unsigned int i = 0; i < gameObjects.size(); i++) {
+		Collider *lhs = gameObjects[i]->getCollider();
+		if(lhs == NULL)
+			continue;
+		
 		for(unsigned int j = i+1; j < gameObjects.size(); j++) {
-			GameObject *lhs = gameObjects[i];
-			GameObject *rhs = gameObjects[j];
+			Collider *rhs = gameObjects[j]->getCollider();
+			if(rhs == NULL)
+				continue;
 
 			if(lhs->getLeft() <= rhs->getRight() && rhs->getLeft() <= lhs->getRight() && lhs->getTop() <= rhs->getBottom() && rhs->getTop() <= lhs->getBottom()) {
-				lhs->onCollision(rhs);
-				rhs->onCollision(lhs);
+				lhs->getParent()->onCollision(rhs->getParent());
+				rhs->getParent()->onCollision(lhs->getParent());
 			}
 		}
 	}
@@ -37,7 +44,7 @@ void Game::draw()
 
 	auto gameObjects = currentScene->getGameObjects();
 	for(unsigned int i = 0; i < gameObjects.size(); i++) {
-		window.draw(*gameObjects[i]);
+		gameObjects[i]->draw(window);
 	}
 
     window.display();

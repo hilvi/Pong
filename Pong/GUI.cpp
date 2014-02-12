@@ -31,7 +31,7 @@ GUI::GUI(void)
 
 void GUI::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	states.transform *= getTransform();
+	states.transform *= parent->getCombinedTransform();
 
 	//target.draw(text, states);
 	target.draw(m_vertices, states);

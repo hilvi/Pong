@@ -5,12 +5,12 @@
 class EnemyPaddle : public Paddle
 {
 public:
-	EnemyPaddle(Ball *ball);
+	EnemyPaddle(GameObject *ball);
 
 	void update(float deltaTime);
 
 	~EnemyPaddle();
 private:
-	Ball *ball;
+	GameObject *ball;
 };
 
