@@ -34,7 +34,9 @@ GameObject::GameObject(const GameObject& other)
 
 GameObject::~GameObject()
 {
-
+  for(int i = 0; i < components.size(); i++) {
+    delete components[i];
+  }
 }
 
 void GameObject::draw(sf::RenderWindow &window)

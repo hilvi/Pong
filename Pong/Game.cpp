@@ -1,11 +1,11 @@
 #include "Game.h"
 #include "Pong.h"
-
-#include <iostream>
+#include "Breakout.h"
 
 Game::Game(sf::RenderWindow &win) : window(win)
 {
-	currentScene = new Pong();
+	//currentScene = new Pong();
+	currentScene = new Breakout();
 }
 
 void Game::checkCollisions()
@@ -52,8 +52,5 @@ void Game::draw()
 
 Game::~Game(void)
 {
-	auto gameObjects = currentScene->getGameObjects();
-	for(unsigned int i = 0; i < gameObjects.size(); i++) {
-		delete gameObjects[i];
-	}
+
 }
