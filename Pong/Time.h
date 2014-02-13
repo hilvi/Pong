@@ -4,13 +4,13 @@
 class Time
 {
 private:
-	sf::Clock clock;
+    sf::Clock clock;
 public:
-	Time(void);
+    Time(void);
 
-	float getDeltaTime();
-	void reset();
+    float getDeltaTime();
+    void reset();
 
-	~Time(void);
+    ~Time(void);
 };
 

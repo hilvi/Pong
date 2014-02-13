@@ -4,13 +4,13 @@
 class Paddle : public Component
 {
 protected:
-	int speed;
+    int speed;
 public:
-	Paddle(void);
-	~Paddle(void);
-	
-	void init();
+    Paddle(void);
+    ~Paddle(void);
 
-	virtual void update(float deltaTime);
+    void init();
+
+    virtual void update(float deltaTime);
 };
 

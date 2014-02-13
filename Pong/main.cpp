@@ -4,35 +4,39 @@
 #include <cstdlib>
 #include <ctime>
 
+#include "Breakout.h"
+
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(600, 400), "Pong");
-    
-	Game game(window);
-	sf::Clock clock;
-	float accumulator = 0;
-	const float dt = 0.01;
 
-	srand(std::time(NULL));
+    Game game(window);
+    sf::Clock clock;
+    float accumulator = 0;
+    const float dt = 0.01;
 
-    while (window.isOpen())
-    {
+    srand(std::time(NULL));
+
+    game.loadScene(new Breakout);
+
+    while(window.isOpen()) {
         sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
+
+        while(window.pollEvent(event)) {
+            if(event.type == sf::Event::Closed) {
                 window.close();
+            }
         }
 
-		accumulator += clock.restart().asSeconds();
+        accumulator += clock.restart().asSeconds();
 
-		while(accumulator >= dt) {
-			game.update(dt);
-			accumulator -= dt;
-		}
+        while(accumulator >= dt) {
+            game.update(dt);
+            accumulator -= dt;
+        }
 
-		game.draw();
+        game.draw();
     }
 
     return 0;

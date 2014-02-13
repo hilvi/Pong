@@ -46,9 +46,9 @@ Breakout::Breakout()
     wall3->addComponent(new Wall("VWall", 10, 360));
     wall3->setPosition(10, 20);
     addObject(wall3);
-    
+
     GameObject *brick = new GameObject("Brick");
-    brick->addComponent(new Brick());
+    brick->addComponent(new Brick(3));
     brick->setPosition(250, 50);
     addObject(brick);
 }

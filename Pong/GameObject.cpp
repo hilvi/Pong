@@ -19,7 +19,7 @@
 
 GameObject::GameObject(std::string name) : name(name)
 {
-  
+
 }
 
 GameObject::GameObject(std::string name, GameObject *parent) : name(name), parent(parent)
@@ -27,71 +27,76 @@ GameObject::GameObject(std::string name, GameObject *parent) : name(name), paren
 
 }
 
-GameObject::GameObject(const GameObject& other)
+GameObject::GameObject(const GameObject &other)
 {
 
 }
 
 GameObject::~GameObject()
 {
-  for(int i = 0; i < components.size(); i++) {
-    delete components[i];
-  }
-  delete collider;
+    for(int i = 0; i < components.size(); i++) {
+        delete components[i];
+    }
+
+    delete collider;
 }
 
 void GameObject::draw(sf::RenderWindow &window)
 {
-  for(int i = 0; i < components.size(); i++) {
-    window.draw(*components[i]);
-  }
+    for(int i = 0; i < components.size(); i++) {
+        window.draw(*components[i]);
+    }
 }
 
 void GameObject::update(float deltatime)
 {
-  for(int i = 0; i < components.size(); i++) {
-    components[i]->update(deltatime);
-  }
+    for(int i = 0; i < components.size(); i++) {
+        components[i]->update(deltatime);
+    }
 }
 
-void GameObject::addComponent(Component* comp)
+void GameObject::addComponent(Component *comp)
 {
-  comp->setParent(this);
-  components.emplace_back(comp);
-  comp->init();
+    comp->setParent(this);
+    components.emplace_back(comp);
+    comp->init();
 }
 
 void GameObject::addCollider(float width, float height)
 {
-  collider = new Collider(width, height);
-  collider->setParent(this);
+    collider = new Collider(width, height);
+    collider->setParent(this);
 }
 
-Collider* GameObject::getCollider()
+Collider *GameObject::getCollider()
 {
-  if(collider != NULL)
-    return collider;
-  else if(parent != NULL)
-    return parent->getCollider();
-  else
-    return NULL;
+    if(collider != NULL) {
+        return collider;
+    } else if(parent != NULL) {
+        return parent->getCollider();
+    } else {
+        return NULL;
+    }
 }
 
-void GameObject::onCollision(GameObject *collider) {
-  for(int i = 0; i < components.size(); i++) {
-    components[i]->onCollision(collider);
-  }
+void GameObject::onCollision(GameObject *collider)
+{
+    for(int i = 0; i < components.size(); i++) {
+        components[i]->onCollision(collider);
+    }
 }
 
 sf::Transform GameObject::getCombinedTransform()
 {
-   if(parent != NULL)
+    if(parent != NULL) {
         return getTransform() * parent->getCombinedTransform();
-    else
+    } else {
         return getTransform();
+    }
 }
 
-std::string GameObject::getName() {
-  return name;
+std::string GameObject::getName()
+{
+    return name;
 }
 

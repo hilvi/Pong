@@ -29,7 +29,7 @@ class Component : public sf::Drawable
 {
 public:
     Component();
-    Component(const Component& other);
+    Component(const Component &other);
     ~Component();
     Collider *getCollider();
     virtual void init();
@@ -44,7 +44,7 @@ protected:
     float width, height;
     sf::VertexArray m_vertices;
 private:
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };
 
 #endif // COMPONENT_H

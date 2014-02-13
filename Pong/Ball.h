@@ -4,20 +4,20 @@
 class Ball : public Component
 {
 public:
-	sf::Vector2f velocity;
+    sf::Vector2f velocity;
 
-	Ball(void);
+    Ball(void);
 
-	void init();
-	void update(float deltaTime);
-	void reset(int direction);
+    void init();
+    void update(float deltaTime);
+    void reset(int direction);
 
-	void onCollision(GameObject *collider);
+    void onCollision(GameObject *collider);
 
-	void paddleCollision(const sf::Vector2f &paddle);
+    void paddleCollision(const sf::Vector2f &paddle);
 
-	~Ball(void);
+    ~Ball(void);
 private:
-	float speed;
+    float speed;
 };
 

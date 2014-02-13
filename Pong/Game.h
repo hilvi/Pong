@@ -14,15 +14,15 @@ private:
 public:
     float deltaTime;
 
-    Game ( sf::RenderWindow &window );
+    Game(sf::RenderWindow &window);
 
-    void update ( float deltaTime );
+    void update(float deltaTime);
     void draw();
 
     sf::RenderWindow &getWindow();
     static Scene *getCurrentScene();
-    static void loadScene ( Scene *scene );
+    static void loadScene(Scene *scene);
 
-    ~Game ( void );
+    ~Game(void);
 };
 

@@ -27,9 +27,9 @@ private:
     int lives;
     sf::Color color;
 public:
-    Brick ( int lives );
+    Brick(int lives);
     virtual void init();
-    virtual void onCollision ( GameObject *collider );
+    virtual void onCollision(GameObject *collider);
     void setColor(sf::Color color);
 };
 

@@ -6,7 +6,8 @@ Paddle::Paddle(void)
 
 }
 
-void Paddle::init() {
+void Paddle::init()
+{
     name = "Paddle";
     width = 10;
     height = 30;
@@ -24,14 +25,18 @@ void Paddle::init() {
     speed = 150;
 }
 
-void Paddle::update(float deltaTime) {
+void Paddle::update(float deltaTime)
+{
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        if (this->getCollider()->getTop() - speed*deltaTime > 20)
-            parent->move(0, -speed*deltaTime);
+        if(this->getCollider()->getTop() - speed * deltaTime > 20) {
+            parent->move(0, -speed * deltaTime);
+        }
     }
+
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-        if (this->getCollider()->getBottom() + speed*deltaTime < 380)
-            parent->move(0, speed*deltaTime);
+        if(this->getCollider()->getBottom() + speed * deltaTime < 380) {
+            parent->move(0, speed * deltaTime);
+        }
     }
 }
 

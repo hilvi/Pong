@@ -22,7 +22,7 @@ Component::Component()
 
 }
 
-Component::Component(const Component& other)
+Component::Component(const Component &other)
 {
 
 }
@@ -34,22 +34,22 @@ Component::~Component()
 
 Collider *Component::getCollider()
 {
-  parent->getCollider();
+    parent->getCollider();
 }
 
 float Component::getHeight()
 {
-  return height;
+    return height;
 }
 
 float Component::getWidth()
 {
-  return width;
+    return width;
 }
 
 void Component::setParent(GameObject *parent)
 {
-  this->parent = parent;
+    this->parent = parent;
 }
 
 void Component::init()
@@ -57,16 +57,17 @@ void Component::init()
 
 }
 
-void Component::onCollision(GameObject* collider)
+void Component::onCollision(GameObject *collider)
 {
 
 }
 
-void Component::update(float deltatime){
-  
+void Component::update(float deltatime)
+{
+
 }
 
-void Component::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void Component::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= parent->getCombinedTransform();
 

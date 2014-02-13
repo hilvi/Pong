@@ -5,7 +5,8 @@
 
 class GameObject;
 
-class Collider {
+class Collider
+{
 private:
     float width;
     float height;

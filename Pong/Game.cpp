@@ -70,8 +70,10 @@ Scene *Game::getCurrentScene()
 
 void Game::loadScene(Scene *scene)
 {
-    if(currentScene == NULL)
+    if(currentScene == NULL) {
         currentScene = scene;
+    }
+
     newScene = scene;
 }
 

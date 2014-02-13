@@ -6,7 +6,8 @@ Wall::Wall(std::string name, float width, float height)
     this->height = height;
 }
 
-void Wall::init() {
+void Wall::init()
+{
     parent->addCollider(width, height);
 
     m_vertices.setPrimitiveType(sf::Quads);

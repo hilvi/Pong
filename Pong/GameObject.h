@@ -26,26 +26,27 @@
 
 class Component;
 
-class GameObject : public sf::Transformable {
+class GameObject : public sf::Transformable
+{
 private:
-  GameObject *parent = NULL;
-  Collider *collider = NULL;
-  std::vector<Component *> components;
+    GameObject *parent = NULL;
+    Collider *collider = NULL;
+    std::vector<Component *> components;
 
 protected:
-  std::string name;
+    std::string name;
 public:
     GameObject(std::string name);
-    GameObject(const GameObject& other);
+    GameObject(const GameObject &other);
     GameObject(std::string name,  GameObject *parent);
     ~GameObject();
-    
+
     Collider *getCollider();
     virtual void update(float deltaTime);
     virtual void draw(sf::RenderWindow &window);
     std::string getName();
     virtual void onCollision(GameObject *collider);
-    sf::Transform getCombinedTransform();    
+    sf::Transform getCombinedTransform();
     void addComponent(Component *comp);
     void addCollider(float width, float height);
 };
