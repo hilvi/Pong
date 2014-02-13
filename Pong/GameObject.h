@@ -29,8 +29,8 @@ class Component;
 class GameObject : public sf::Transformable
 {
 private:
-    GameObject *parent = NULL;
-    Collider *collider = NULL;
+    GameObject *parent;
+    Collider *collider;
     std::vector<Component *> components;
 
 protected:

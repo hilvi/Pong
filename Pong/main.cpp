@@ -14,7 +14,7 @@ int main()
     Game game(window);
     sf::Clock clock;
     float accumulator = 0;
-    const float dt = 0.01;
+    const float dt = 0.01f;
 
     srand(std::time(NULL));
 

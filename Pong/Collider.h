@@ -10,7 +10,7 @@ class Collider
 private:
     float width;
     float height;
-    GameObject *parent = NULL;
+    GameObject *parent;
 public:
     Collider(float width, float height);
     bool checkCollision(Collider collider);

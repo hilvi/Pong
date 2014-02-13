@@ -34,7 +34,7 @@ Component::~Component()
 
 Collider *Component::getCollider()
 {
-    parent->getCollider();
+    return parent->getCollider();
 }
 
 float Component::getHeight()

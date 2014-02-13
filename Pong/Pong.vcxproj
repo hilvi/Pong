@@ -71,6 +71,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Breakout.cpp" />
+    <ClCompile Include="BreakoutLevel1.cpp" />
+    <ClCompile Include="BreakoutLevel2.cpp" />
+    <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="EnemyPaddle.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -80,10 +86,17 @@
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Pong.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Time.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Breakout.h" />
+    <ClInclude Include="BreakoutLevel1.h" />
+    <ClInclude Include="BreakoutLevel2.h" />
+    <ClInclude Include="Brick.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="EnemyPaddle.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
@@ -92,6 +105,7 @@
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Pong.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

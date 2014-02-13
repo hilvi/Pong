@@ -40,7 +40,7 @@ public:
     float getHeight();
 protected:
     std::string name;
-    GameObject *parent = NULL;
+    GameObject *parent;
     float width, height;
     sf::VertexArray m_vertices;
 private:

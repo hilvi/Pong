@@ -19,12 +19,14 @@
 
 GameObject::GameObject(std::string name) : name(name)
 {
-
+	parent = NULL;
+	collider = NULL;
 }
 
 GameObject::GameObject(std::string name, GameObject *parent) : name(name), parent(parent)
 {
-
+	parent = NULL;
+	collider = NULL;
 }
 
 GameObject::GameObject(const GameObject &other)
@@ -34,7 +36,7 @@ GameObject::GameObject(const GameObject &other)
 
 GameObject::~GameObject()
 {
-    for(int i = 0; i < components.size(); i++) {
+    for(unsigned int i = 0; i < components.size(); i++) {
         delete components[i];
     }
 
@@ -43,14 +45,14 @@ GameObject::~GameObject()
 
 void GameObject::draw(sf::RenderWindow &window)
 {
-    for(int i = 0; i < components.size(); i++) {
+    for(unsigned int i = 0; i < components.size(); i++) {
         window.draw(*components[i]);
     }
 }
 
 void GameObject::update(float deltatime)
 {
-    for(int i = 0; i < components.size(); i++) {
+    for(unsigned int i = 0; i < components.size(); i++) {
         components[i]->update(deltatime);
     }
 }
@@ -81,7 +83,7 @@ Collider *GameObject::getCollider()
 
 void GameObject::onCollision(GameObject *collider)
 {
-    for(int i = 0; i < components.size(); i++) {
+    for(unsigned int i = 0; i < components.size(); i++) {
         components[i]->onCollision(collider);
     }
 }
