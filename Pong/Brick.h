@@ -22,9 +22,15 @@
 
 class Brick : public Component
 {
+private:
+    static int _lives;
+    int lives;
+    sf::Color color;
 public:
-    Brick();
-    void init();
+    Brick ( int lives );
+    virtual void init();
+    virtual void onCollision ( GameObject *collider );
+    void setColor(sf::Color color);
 };
 
 #endif // BRICK_H

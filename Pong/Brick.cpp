@@ -16,16 +16,21 @@
  */
 
 #include "Brick.h"
+#include "Game.h"
+#include "Breakout.h"
 
-Brick::Brick()
+int Brick::_lives = 0;
+
+Brick::Brick(int lives) : lives(lives)
 {
-   
+    _lives += lives;
 }
 
-void Brick::init() {
+void Brick::init()
+{
     width = 10;
     height = 200;
-    
+
     parent->addCollider(width, height);
 
     m_vertices.setPrimitiveType(sf::Quads);
@@ -35,4 +40,32 @@ void Brick::init() {
     m_vertices[1] = sf::Vector2f(width, 0);
     m_vertices[2] = sf::Vector2f(width, height);
     m_vertices[3] = sf::Vector2f(0, height);
+
+    float colorRatio = lives / 5.0;
+    color = sf::Color(255 * colorRatio, 0, 0);
+    setColor(color);
+}
+
+void Brick::setColor(sf::Color color)
+{
+    for(int i = 0; i < m_vertices.getVertexCount(); i++) {
+        m_vertices[i].color = color;
+    }
+}
+
+void Brick::onCollision(GameObject *collider)
+{
+    lives--;
+    float colorRatio = lives / 3.0;
+    color = sf::Color(255 * colorRatio, 0, 0);
+    setColor(color);
+
+    if(lives == 0) {
+
+        Game::getCurrentScene()->destroyObject(parent);
+    }
+
+    if(--_lives == 0) {
+        Game::loadScene(new Breakout);
+    }
 }
