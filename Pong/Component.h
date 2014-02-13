@@ -29,7 +29,6 @@ class Component : public sf::Drawable
 {
 public:
     Component();
-    Component(const Component &other);
     ~Component();
     Collider *getCollider();
     virtual void init();
@@ -43,6 +42,7 @@ protected:
     GameObject *parent;
     float width, height;
     sf::VertexArray m_vertices;
+	sf::Texture texture;
 private:
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };

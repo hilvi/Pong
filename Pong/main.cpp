@@ -4,12 +4,17 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "BreakoutLevel1.h"
+#include "Asteroids.h"
 
+
+#include <iostream>
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(600, 400), "Pong");
+
+	sf::ContextSettings settings = window.getSettings();
+	std::cout << settings.majorVersion << "." << settings.minorVersion << std::endl;
 
     Game game(window);
     sf::Clock clock;
@@ -18,7 +23,7 @@ int main()
 
     srand(std::time(NULL));
 
-    game.loadScene(new BreakoutLevel1);
+    game.loadScene(new Asteroids);
 
     while(window.isOpen()) {
         sf::Event event;

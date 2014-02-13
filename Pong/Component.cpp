@@ -22,11 +22,6 @@ Component::Component()
 
 }
 
-Component::Component(const Component &other)
-{
-
-}
-
 Component::~Component()
 {
 
@@ -70,6 +65,8 @@ void Component::update(float deltatime)
 void Component::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= parent->getCombinedTransform();
+
+	states.texture = &texture;
 
     target.draw(m_vertices, states);
 }

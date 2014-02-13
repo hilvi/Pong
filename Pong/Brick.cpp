@@ -41,7 +41,7 @@ void Brick::init()
     m_vertices[2] = sf::Vector2f(width, height);
     m_vertices[3] = sf::Vector2f(0, height);
 
-    float colorRatio = lives / 5.0f;
+    float colorRatio = lives / 3.0f;
     color = sf::Color(255 * colorRatio, 0, 0);
     setColor(color);
 }
@@ -56,7 +56,7 @@ void Brick::setColor(sf::Color color)
 void Brick::onCollision(GameObject *collider)
 {
     lives--;
-    float colorRatio = lives / 5.0f;
+    float colorRatio = lives / 3.0f;
     color = sf::Color(255 * colorRatio, 0, 0);
     setColor(color);
 

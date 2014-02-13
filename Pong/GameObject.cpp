@@ -25,7 +25,6 @@ GameObject::GameObject(std::string name) : name(name)
 
 GameObject::GameObject(std::string name, GameObject *parent) : name(name), parent(parent)
 {
-	parent = NULL;
 	collider = NULL;
 }
 
