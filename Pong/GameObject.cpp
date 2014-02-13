@@ -19,13 +19,13 @@
 
 GameObject::GameObject(std::string name) : name(name)
 {
-	parent = NULL;
-	collider = NULL;
+    parent = NULL;
+    collider = NULL;
 }
 
 GameObject::GameObject(std::string name, GameObject *parent) : name(name), parent(parent)
 {
-	collider = NULL;
+    collider = NULL;
 }
 
 GameObject::GameObject(const GameObject &other)

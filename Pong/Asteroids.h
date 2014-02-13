@@ -4,7 +4,7 @@
 class Asteroids : public Scene
 {
 public:
-	Asteroids(void);
-	~Asteroids(void);
+    Asteroids(void);
+    ~Asteroids(void);
 };
 

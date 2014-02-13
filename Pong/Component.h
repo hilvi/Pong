@@ -42,7 +42,7 @@ protected:
     GameObject *parent;
     float width, height;
     sf::VertexArray m_vertices;
-	sf::Texture texture;
+    sf::Texture texture;
 private:
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 };

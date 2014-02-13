@@ -13,8 +13,8 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(600, 400), "Pong");
 
-	sf::ContextSettings settings = window.getSettings();
-	std::cout << settings.majorVersion << "." << settings.minorVersion << std::endl;
+    sf::ContextSettings settings = window.getSettings();
+    std::cout << settings.majorVersion << "." << settings.minorVersion << std::endl;
 
     Game game(window);
     sf::Clock clock;

@@ -66,7 +66,7 @@ void Component::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     states.transform *= parent->getCombinedTransform();
 
-	states.texture = &texture;
+    states.texture = &texture;
 
     target.draw(m_vertices, states);
 }

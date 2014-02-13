@@ -3,10 +3,10 @@
 
 Asteroids::Asteroids(void)
 {
-	GameObject *ship = new GameObject("Ship");
-	ship->addComponent(new Ship());
-	ship->setPosition(300, 200);
-	addObject(ship);
+    GameObject *ship = new GameObject("Ship");
+    ship->addComponent(new Ship());
+    ship->setPosition(300, 200);
+    addObject(ship);
 }
 
 
