@@ -15,6 +15,7 @@ public:
     void addObject(GameObject *obj);
     void destroyObject(GameObject *obj);
     void clean();
+    virtual void nextLevel() {};
 
     ~Scene(void);
 };

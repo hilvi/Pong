@@ -15,19 +15,26 @@
  *
  */
 
-#ifndef BREAKOUT_H
-#define BREAKOUT_H
+#include "BreakoutLevel2.h"
+#include "BreakoutLevel1.h"
+#include "Game.h"
 
-#include "Scene.h"
-#include "Paddle.h"
-#include "Ball.h"
-#include "Wall.h"
-#include "Brick.h"
-
-class Breakout : public Scene
+BreakoutLevel2::BreakoutLevel2() : Breakout()
 {
-public:
-    Breakout();
-};
+    int bricks = 3;
+    int spacing = 50;
+    int position = 100;
 
-#endif // BREAKOUT_H
+    for(int i = 0; i < bricks; i++) {
+        GameObject *brick = new GameObject("Brick");
+        brick->addComponent(new Brick(3));
+        brick->setPosition(100, position);
+        addObject(brick);
+        position += spacing;
+    }
+}
+
+void BreakoutLevel2::nextLevel()
+{
+    Game::loadScene(new BreakoutLevel1);
+}

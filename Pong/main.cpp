@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "Breakout.h"
+#include "BreakoutLevel1.h"
 
 
 int main()
@@ -18,7 +18,7 @@ int main()
 
     srand(std::time(NULL));
 
-    game.loadScene(new Breakout);
+    game.loadScene(new BreakoutLevel1);
 
     while(window.isOpen()) {
         sf::Event event;

@@ -29,7 +29,7 @@ Brick::Brick(int lives) : lives(lives)
 void Brick::init()
 {
     width = 10;
-    height = 200;
+    height = 40;
 
     parent->addCollider(width, height);
 
@@ -66,6 +66,6 @@ void Brick::onCollision(GameObject *collider)
     }
 
     if(--_lives == 0) {
-        Game::loadScene(new Breakout);
+        Game::getCurrentScene()->nextLevel();
     }
 }

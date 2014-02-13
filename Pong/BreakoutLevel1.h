@@ -15,19 +15,16 @@
  *
  */
 
-#ifndef BREAKOUT_H
-#define BREAKOUT_H
+#ifndef BREAKOUTLEVEL1_H
+#define BREAKOUTLEVEL1_H
 
-#include "Scene.h"
-#include "Paddle.h"
-#include "Ball.h"
-#include "Wall.h"
-#include "Brick.h"
+#include "Breakout.h"
 
-class Breakout : public Scene
+class BreakoutLevel1 : public Breakout
 {
 public:
-    Breakout();
+    BreakoutLevel1();
+    virtual void nextLevel();
 };
 
-#endif // BREAKOUT_H
+#endif // BREAKOUTLEVEL1_H
