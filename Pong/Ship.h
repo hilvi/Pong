@@ -5,6 +5,9 @@ class Ship : public Component
 {
 protected:
     float acceleration;
+    float rotateSpeed;
+    float maxSpeed;
+    float drag;
     sf::Vector2f speed;
 public:
     Ship(void);

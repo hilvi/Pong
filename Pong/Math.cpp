@@ -15,11 +15,15 @@ sf::Vector2f reflection(const sf::Vector2f &vector, const sf::Vector2f &normal)
 sf::Vector2f normalize(const sf::Vector2f &vector)
 {
     float mag = magnitude(vector);
-    return sf::Vector2f(vector.x / mag, vector.y / mag);
+
+    if(mag == 0)
+        return sf::Vector2f(0 , 0);
+    else
+        return sf::Vector2f(vector.x / mag, vector.y / mag);
 }
 
 float magnitude(const sf::Vector2f &vector)
 {
-    return std::sqrtf(vector.x * vector.x + vector.y * vector.y);
+    return sqrtf(vector.x * vector.x + vector.y * vector.y);
 }
 }
