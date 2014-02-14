@@ -8,8 +8,9 @@ class Game
 {
 private:
     sf::RenderWindow &window;
-    static Scene *currentScene;
-    static Scene *newScene;
+    Scene *currentScene;
+    Scene *newScene;
+    static Game *instance;
     void checkCollisions();
 public:
     float deltaTime;
@@ -19,9 +20,9 @@ public:
     void update(float deltaTime);
     void draw();
 
-    sf::RenderWindow &getWindow();
     static Scene *getCurrentScene();
     static void loadScene(Scene *scene);
+    static sf::RenderWindow &getWindow();
 
     ~Game(void);
 };

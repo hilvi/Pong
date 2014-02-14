@@ -1,10 +1,16 @@
 #include "Game.h"
-Scene *Game::currentScene = NULL;
-Scene *Game::newScene = NULL;
+
+Game *Game::instance = NULL;
 
 Game::Game(sf::RenderWindow &win) : window(win)
 {
+    currentScene = NULL;
+    newScene = NULL;
 
+    if(instance != NULL)
+        throw 1;
+
+    instance = this;
 }
 
 void Game::checkCollisions()
@@ -65,16 +71,26 @@ void Game::draw()
 
 Scene *Game::getCurrentScene()
 {
-    return currentScene;
+    if(instance != NULL)
+        return instance->currentScene;
+    else
+        return NULL;
 }
 
 void Game::loadScene(Scene *scene)
 {
-    if(currentScene == NULL) {
-        currentScene = scene;
-    }
+    if(instance != NULL) {
+        if(instance->currentScene == NULL) {
+            instance->currentScene = scene;
+        }
 
-    newScene = scene;
+        instance->newScene = scene;
+    }
+}
+
+sf::RenderWindow &Game::getWindow()
+{
+    return instance->window;
 }
 
 Game::~Game(void)
