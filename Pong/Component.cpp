@@ -75,8 +75,3 @@ void Component::draw(sf::RenderTarget &target, sf::RenderStates states) const
 
     target.draw(m_vertices, states);
 }
-
-Component *Component::clone()
-{
-    return new Component(*this);
-}

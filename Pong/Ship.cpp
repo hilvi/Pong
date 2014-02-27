@@ -110,13 +110,8 @@ void Ship::update(float deltaTime)
 void Ship::onCollision(GameObject *collider)
 {
     if(collider->getName() == "Asteroid") {
-        //Game::loadScene(new Asteroids());
+        Game::loadScene(new Asteroids());
     }
-}
-
-Ship *Ship::clone()
-{
-    return new Ship(*this);
 }
 
 Ship::~Ship(void)

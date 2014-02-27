@@ -28,22 +28,6 @@ GameObject::GameObject(std::string name, GameObject *parent) : name(name), paren
     collider = NULL;
 }
 
-GameObject::GameObject(const GameObject &other)
-{
-
-    parent = NULL;
-
-    if(other.collider != NULL) {
-        collider = new Collider(*other.collider);
-        collider->setParent(this);
-    }
-    
-    for(auto &it : other.getComponents()) {
-        addComponent(it->clone());
-        
-    }
-}
-
 GameObject::~GameObject()
 {
     for(auto & comp : components) {
@@ -107,7 +91,7 @@ sf::Transform GameObject::getCombinedTransform()
     }
 }
 
-std::vector<Component *> GameObject::getComponents() const
+const std::vector<Component *> &GameObject::getComponents()
 {
     return components;
 }

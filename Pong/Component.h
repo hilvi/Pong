@@ -38,7 +38,6 @@ public:
     float getWidth();
     float getHeight();
     std::string getName();
-    virtual Component *clone();
 protected:
     std::string name;
     GameObject *parent;

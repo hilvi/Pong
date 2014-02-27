@@ -19,6 +19,5 @@ public:
     virtual void update(float deltaTime);
     virtual void init();
     virtual void onCollision(GameObject *collider);
-    Ship *clone();
 };
 

@@ -37,7 +37,6 @@ protected:
     std::string name;
 public:
     GameObject(std::string name);
-    GameObject(const GameObject &other);
     GameObject(std::string name,  GameObject *parent);
     ~GameObject();
 
@@ -49,7 +48,7 @@ public:
     sf::Transform getCombinedTransform();
     void addComponent(Component *comp);
     void addCollider(float width, float height);
-    std::vector<Component *> getComponents() const;
+    const std::vector<Component *> &getComponents();
 };
 
 #endif // GAMEOBJECT_H
