@@ -42,6 +42,11 @@ float Component::getWidth()
     return width;
 }
 
+std::string Component::getName()
+{
+    return name;
+}
+
 void Component::setParent(GameObject *parent)
 {
     this->parent = parent;
@@ -69,4 +74,9 @@ void Component::draw(sf::RenderTarget &target, sf::RenderStates states) const
     states.texture = &texture;
 
     target.draw(m_vertices, states);
+}
+
+Component *Component::clone()
+{
+    return new Component(*this);
 }

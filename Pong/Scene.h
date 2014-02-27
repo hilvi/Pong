@@ -16,7 +16,7 @@ public:
     void destroyObject(GameObject *obj);
     void clean();
     virtual void nextLevel() {};
-
+    virtual void update(float deltaTime) {};
+    
     ~Scene(void);
 };
-

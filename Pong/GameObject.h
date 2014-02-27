@@ -49,6 +49,7 @@ public:
     sf::Transform getCombinedTransform();
     void addComponent(Component *comp);
     void addCollider(float width, float height);
+    std::vector<Component *> getComponents() const;
 };
 
 #endif // GAMEOBJECT_H

@@ -1,4 +1,5 @@
 #include "Collider.h"
+#include "GameObject.h"
 
 Collider::Collider(float width, float height)
 {

@@ -15,38 +15,25 @@
  *
  */
 
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#ifndef BULLET_H
+#define BULLET_H
 
-#include <SFML/Graphics.hpp>
-#include "GameObject.h"
-#include <string>
+#include <../../home/hilvi/Documents/git/SimpleEngine/Pong/Component.h>
 
-class GameObject;
-class Collider;
-
-class Component : public sf::Drawable
+class Bullet : public Component
 {
+private:
+    sf::Vector2f direction;
+    float speed;
+    sf::Color color;
 public:
-    Component();
-    ~Component();
-    Collider *getCollider();
+    Bullet(sf::Vector2f dir);
+    
     virtual void init();
     virtual void onCollision(GameObject *collider);
     virtual void update(float deltatime);
-    void setParent(GameObject *parent);
-    float getWidth();
-    float getHeight();
-    std::string getName();
-    virtual Component *clone();
-protected:
-    std::string name;
-    GameObject *parent;
-    float width, height;
-    sf::VertexArray m_vertices;
-    sf::Texture texture;
-private:
-    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+    
+    void setColor(sf::Color color);
 };
 
-#endif // COMPONENT_H
+#endif // BULLET_H

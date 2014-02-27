@@ -23,7 +23,8 @@ public:
     static Scene *getCurrentScene();
     static void loadScene(Scene *scene);
     static sf::RenderWindow &getWindow();
+    
+    static GameObject *instantiate(const GameObject *obj);
 
     ~Game(void);
 };
-

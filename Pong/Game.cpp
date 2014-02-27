@@ -1,4 +1,5 @@
 #include "Game.h"
+#include <iostream>
 
 Game *Game::instance = NULL;
 
@@ -41,11 +42,13 @@ void Game::checkCollisions()
 
 void Game::update(float deltaTime)
 {
+    currentScene->update(deltaTime);
+    
     auto gameObjects = currentScene->getGameObjects();
     checkCollisions();
 
-    for(unsigned int i = 0; i < gameObjects.size(); i++) {
-        gameObjects[i]->update(deltaTime);
+    for(auto &obj : gameObjects) {
+        obj->update(deltaTime);
     }
 
     currentScene->clean();
@@ -62,8 +65,8 @@ void Game::draw()
 
     auto gameObjects = currentScene->getGameObjects();
 
-    for(unsigned int i = 0; i < gameObjects.size(); i++) {
-        gameObjects[i]->draw(window);
+    for(auto &obj : gameObjects) {
+        obj->draw(window);
     }
 
     window.display();
@@ -91,6 +94,16 @@ void Game::loadScene(Scene *scene)
 sf::RenderWindow &Game::getWindow()
 {
     return instance->window;
+}
+
+GameObject *Game::instantiate(const GameObject *object)
+{
+    GameObject *obj = NULL;
+    if(getCurrentScene() != NULL) {
+        obj = new GameObject(*object);
+        getCurrentScene()->addObject(obj);
+    }
+    return obj;
 }
 
 Game::~Game(void)

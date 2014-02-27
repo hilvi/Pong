@@ -31,12 +31,23 @@ GameObject::GameObject(std::string name, GameObject *parent) : name(name), paren
 GameObject::GameObject(const GameObject &other)
 {
 
+    parent = NULL;
+
+    if(other.collider != NULL) {
+        collider = new Collider(*other.collider);
+        collider->setParent(this);
+    }
+    
+    for(auto &it : other.getComponents()) {
+        addComponent(it->clone());
+        
+    }
 }
 
 GameObject::~GameObject()
 {
-    for(unsigned int i = 0; i < components.size(); i++) {
-        delete components[i];
+    for(auto & comp : components) {
+        delete comp;
     }
 
     delete collider;
@@ -44,15 +55,15 @@ GameObject::~GameObject()
 
 void GameObject::draw(sf::RenderWindow &window)
 {
-    for(unsigned int i = 0; i < components.size(); i++) {
-        window.draw(*components[i]);
+    for(auto & comp : components) {
+        window.draw(*comp);
     }
 }
 
 void GameObject::update(float deltatime)
 {
-    for(unsigned int i = 0; i < components.size(); i++) {
-        components[i]->update(deltatime);
+    for(auto & comp : components) {
+        comp->update(deltatime);
     }
 }
 
@@ -82,8 +93,8 @@ Collider *GameObject::getCollider()
 
 void GameObject::onCollision(GameObject *collider)
 {
-    for(unsigned int i = 0; i < components.size(); i++) {
-        components[i]->onCollision(collider);
+    for(auto & comp : components) {
+        comp->onCollision(collider);
     }
 }
 
@@ -94,6 +105,11 @@ sf::Transform GameObject::getCombinedTransform()
     } else {
         return getTransform();
     }
+}
+
+std::vector<Component *> GameObject::getComponents() const
+{
+    return components;
 }
 
 std::string GameObject::getName()

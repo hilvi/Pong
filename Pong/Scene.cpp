@@ -23,11 +23,11 @@ const std::vector<GameObject *> &Scene::getGameObjects()
 void Scene::clean()
 {
     for(unsigned int i = 0; i < destroyList.size(); i++) {
-        gameObjects.erase(std::remove(gameObjects.begin(), gameObjects.end(), destroyList[i]), gameObjects.end());
-        delete destroyList[i];
+        GameObject *tmp = destroyList[i];
+        gameObjects.erase(std::remove(gameObjects.begin(), gameObjects.end(), tmp), gameObjects.end());
+        destroyList.erase(std::remove(destroyList.begin(), destroyList.end(), tmp), destroyList.end());
+        delete tmp;
     }
-
-    destroyList.clear();
 }
 
 Scene::~Scene(void)

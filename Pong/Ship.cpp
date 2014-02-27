@@ -3,9 +3,8 @@
 #include <SFML/Window/VideoMode.hpp>
 #include "Game.h"
 #include "Math.h"
-
-#include <iostream>
-
+#include "Bullet.h"
+#include "Asteroids.h"
 
 const float PI = 3.14159265358979f;
 
@@ -15,8 +14,9 @@ Ship::Ship(void)
 
 void Ship::init()
 {
-    width = 30;
-    height = 30;
+    name = "Ship";
+    width = 32;
+    height = 32;
 
     parent->addCollider(width, height);
 
@@ -30,15 +30,17 @@ void Ship::init()
     m_vertices[2].position = sf::Vector2f(width, height);
     m_vertices[3].position = sf::Vector2f(0, height);
 
-    m_vertices[0].texCoords = sf::Vector2f(0, height);
+    m_vertices[0].texCoords = sf::Vector2f(0, texture.getSize().y);
     m_vertices[1].texCoords = sf::Vector2f(0, 0);
-    m_vertices[2].texCoords = sf::Vector2f(width, 0);
-    m_vertices[3].texCoords = sf::Vector2f(width, height);
+    m_vertices[2].texCoords = sf::Vector2f(texture.getSize().x, 0);
+    m_vertices[3].texCoords = sf::Vector2f(texture.getSize().x, texture.getSize().y);
 
     acceleration = 5;
     drag = 1;
     rotateSpeed = 200;
     maxSpeed = 100;
+    coolDown = 0.3f;
+    coolDownTimer = 0;
 
     parent->setOrigin(getCollider()->getCenter());
 }
@@ -48,7 +50,9 @@ void Ship::update(float deltaTime)
     sf::Vector2f pos = parent->getPosition();
     float width = Game::getWindow().getSize().x;
     float height = Game::getWindow().getSize().y;
+    
 
+    //Wrap around screen
     if(pos.x < 0)
         pos.x = width;
 
@@ -62,7 +66,9 @@ void Ship::update(float deltaTime)
         pos.y = 0;
 
     parent->setPosition(pos);
-
+    
+    
+    //Movement
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         parent->rotate(-rotateSpeed * deltaTime);
 
@@ -82,8 +88,36 @@ void Ship::update(float deltaTime)
     speed -= dir * drag * deltaTime;
 
     parent->move(speed);
+    
+    
+    //Shooting
+    coolDownTimer -= deltaTime;
+    
+    if(coolDownTimer < 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        sf::Vector2f direction;
+        direction.x = cos(parent->getRotation() * PI / 180);
+        direction.y = sin(parent->getRotation() * PI / 180);
+        
+        GameObject *bullet = new GameObject("Bullet");
+        bullet->addComponent(new Bullet(direction));
+        Game::getCurrentScene()->addObject(bullet);
+        
+        bullet->setPosition(parent->getPosition());
+        coolDownTimer = coolDown;
+    }
 }
 
+void Ship::onCollision(GameObject *collider)
+{
+    if(collider->getName() == "Asteroid") {
+        //Game::loadScene(new Asteroids());
+    }
+}
+
+Ship *Ship::clone()
+{
+    return new Ship(*this);
+}
 
 Ship::~Ship(void)
 {
