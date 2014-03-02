@@ -18,7 +18,7 @@ void Ship::init()
     width = 32;
     height = 32;
 
-    parent->addCollider(width, height);
+    parent->addCollider(width * 0.8f, height * 0.8f);
 
     m_vertices.setPrimitiveType(sf::Quads);
     m_vertices.resize(4);
@@ -38,11 +38,9 @@ void Ship::init()
     acceleration = 5;
     drag = 1;
     rotateSpeed = 200;
-    maxSpeed = 100;
+    maxSpeed = 80;
     coolDown = 0.3f;
     coolDownTimer = 0;
-
-    parent->setOrigin(getCollider()->getCenter());
 }
 
 void Ship::update(float deltaTime)
@@ -50,7 +48,7 @@ void Ship::update(float deltaTime)
     sf::Vector2f pos = parent->getPosition();
     float width = Game::getWindow().getSize().x;
     float height = Game::getWindow().getSize().y;
-    
+
 
     //Wrap around screen
     if(pos.x < 0)
@@ -66,8 +64,8 @@ void Ship::update(float deltaTime)
         pos.y = 0;
 
     parent->setPosition(pos);
-    
-    
+
+
     //Movement
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         parent->rotate(-rotateSpeed * deltaTime);
@@ -88,20 +86,20 @@ void Ship::update(float deltaTime)
     speed -= dir * drag * deltaTime;
 
     parent->move(speed);
-    
-    
+
+
     //Shooting
     coolDownTimer -= deltaTime;
-    
+
     if(coolDownTimer < 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         sf::Vector2f direction;
         direction.x = cos(parent->getRotation() * PI / 180);
         direction.y = sin(parent->getRotation() * PI / 180);
-        
+
         GameObject *bullet = new GameObject("Bullet");
         bullet->addComponent(new Bullet(direction));
         Game::getCurrentScene()->addObject(bullet);
-        
+
         bullet->setPosition(parent->getPosition());
         coolDownTimer = coolDown;
     }

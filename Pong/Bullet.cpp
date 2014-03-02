@@ -30,8 +30,8 @@ Bullet::Bullet(sf::Vector2f dir)
 void Bullet::init()
 {
     name = "Bullet";
-    width = 3;
-    height = 3;
+    width = 2;
+    height = 2;
 
     parent->addCollider(width, height);
 
@@ -42,8 +42,6 @@ void Bullet::init()
     m_vertices[1].position = sf::Vector2f(width, 0);
     m_vertices[2].position = sf::Vector2f(width, height);
     m_vertices[3].position = sf::Vector2f(0, height);
-
-    parent->setOrigin(getCollider()->getCenter());
 
     color = sf::Color::White;
 }

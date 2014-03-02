@@ -11,7 +11,7 @@ private:
 public:
     Asteroids(void);
     ~Asteroids(void);
-    
+
     void update(float deltaTime);
 };
 

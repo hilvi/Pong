@@ -60,6 +60,7 @@ void GameObject::addComponent(Component *comp)
 
 void GameObject::addCollider(float width, float height)
 {
+    this->setOrigin(width / 2, height / 2);
     collider = new Collider(width, height);
     collider->setParent(this);
 }

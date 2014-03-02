@@ -28,11 +28,11 @@ private:
     sf::Color color;
 public:
     Bullet(sf::Vector2f dir);
-    
+
     virtual void init();
     virtual void onCollision(GameObject *collider);
     virtual void update(float deltatime);
-    
+
     void setColor(sf::Color color);
 };
 

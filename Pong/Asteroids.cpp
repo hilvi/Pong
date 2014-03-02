@@ -12,7 +12,7 @@ Asteroids::Asteroids(void)
 {
     spawnTimer = spawnTime = 3;
     minDistance = 200;
-    
+
     ship = new GameObject("Ship");
     ship->addComponent(new Ship());
     ship->setPosition(300, 200);
@@ -22,23 +22,24 @@ Asteroids::Asteroids(void)
 void Asteroids::update(float deltaTime)
 {
     spawnTimer -= deltaTime;
+
     if(spawnTimer < 0) {
         sf::Vector2f shipPos = ship->getPosition();
         int width = Game::getWindow().getSize().x;
         int height = Game::getWindow().getSize().y;
-        
+
         sf::Vector2f asteroidPos(rand() % width, rand() % height);
-        
+
         sf::Vector2f distance = asteroidPos - shipPos;
         float angle = atan2f(distance.y, distance.x);
         sf::Vector2f direction;
         direction.x = sinf(angle);
         direction.y = cosf(angle);
-        
+
         if(Math::magnitude(distance) < minDistance) {
             asteroidPos = direction * minDistance;
         }
-        
+
         spawnTimer = spawnTime;
         GameObject *asteroid = new GameObject("Asteroid");
         asteroid->addComponent(new Asteroid(angle));

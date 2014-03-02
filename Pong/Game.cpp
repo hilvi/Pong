@@ -43,11 +43,11 @@ void Game::checkCollisions()
 void Game::update(float deltaTime)
 {
     currentScene->update(deltaTime);
-    
+
     auto gameObjects = currentScene->getGameObjects();
     checkCollisions();
 
-    for(auto &obj : gameObjects) {
+    for(auto & obj : gameObjects) {
         obj->update(deltaTime);
     }
 
@@ -65,7 +65,7 @@ void Game::draw()
 
     auto gameObjects = currentScene->getGameObjects();
 
-    for(auto &obj : gameObjects) {
+    for(auto & obj : gameObjects) {
         obj->draw(window);
     }
 
@@ -99,10 +99,12 @@ sf::RenderWindow &Game::getWindow()
 GameObject *Game::instantiate(const GameObject *object)
 {
     GameObject *obj = NULL;
+
     if(getCurrentScene() != NULL) {
         obj = new GameObject(*object);
         getCurrentScene()->addObject(obj);
     }
+
     return obj;
 }
 

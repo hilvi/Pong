@@ -21,31 +21,27 @@ float Collider::getWidth()
 
 sf::Vector2f Collider::getCenter()
 {
-    sf::Vector2f center;
-    center.x = (getLeft() + getRight()) / 2;
-    center.y = (getTop() + getBottom()) / 2;
-
-    return center;
+    return parent->getPosition();
 }
 
 float Collider::getBottom()
 {
-    return parent->getPosition().y + height;
+    return parent->getPosition().y + height / 2;
 }
 
 float Collider::getTop()
 {
-    return parent->getPosition().y;
+    return parent->getPosition().y - height / 2;
 }
 
 float Collider::getLeft()
 {
-    return parent->getPosition().x;
+    return parent->getPosition().x - width / 2;
 }
 
 float Collider::getRight()
 {
-    return parent->getPosition().x + width;
+    return parent->getPosition().x + width / 2;
 }
 
 GameObject *Collider::getParent()
