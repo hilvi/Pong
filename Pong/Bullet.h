@@ -18,7 +18,7 @@
 #ifndef BULLET_H
 #define BULLET_H
 
-#include <../../home/hilvi/Documents/git/SimpleEngine/Pong/Component.h>
+#include "Component.h"
 
 class Bullet : public Component
 {

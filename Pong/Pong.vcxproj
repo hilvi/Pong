@@ -70,12 +70,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Asteroid.cpp" />
     <ClCompile Include="Asteroids.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Breakout.cpp" />
     <ClCompile Include="BreakoutLevel1.cpp" />
     <ClCompile Include="BreakoutLevel2.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="EnemyPaddle.cpp" />
@@ -92,12 +94,14 @@
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asteroid.h" />
     <ClInclude Include="Asteroids.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Breakout.h" />
     <ClInclude Include="BreakoutLevel1.h" />
     <ClInclude Include="BreakoutLevel2.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EnemyPaddle.h" />

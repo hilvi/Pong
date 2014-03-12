@@ -48,8 +48,8 @@ Asteroid::Asteroid(float angle, int tier)
 
 void Asteroid::init()
 {
-    width = 64 / tier;
-    height = 64 / tier;
+    width = floor(64 / tier);
+    height = floor(64 / tier);
 
     parent->addCollider(width * 0.8f, height * 0.8f);
 
