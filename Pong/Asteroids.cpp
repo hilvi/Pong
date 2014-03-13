@@ -1,6 +1,8 @@
 #include "Asteroids.h"
 #include "Ship.h"
 #include "ShipInput.h"
+#include "ShipAI.h"
+#include "ShipSensor.h"
 #include "Asteroid.h"
 #include "Game.h"
 #include "Math.h"
@@ -17,9 +19,15 @@ Asteroids::Asteroids(void)
     ship = new GameObject("Ship");
     Ship *shipComp = new Ship();
     ship->addComponent(shipComp);
-    ship->addComponent(new ShipInput(shipComp));
+    ShipAI *shipAI = new ShipAI(shipComp);
+    ship->addComponent(shipAI);
+    
     ship->setPosition(300, 200);
     addObject(ship);
+    
+    GameObject *sensor = new GameObject("Sensor", ship);
+    sensor->addComponent(new ShipSensor(shipAI));
+    addObject(sensor);
 }
 
 void Asteroids::update(float deltaTime)

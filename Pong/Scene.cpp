@@ -7,12 +7,12 @@ Scene::Scene(void)
 
 void Scene::addObject(GameObject *obj)
 {
-    gameObjects.emplace_back(obj);
+    gameObjects.push_back(obj);
 }
 
 void Scene::destroyObject(GameObject *obj)
 {
-    destroyList.emplace_back(obj);
+    destroyList.push_back(obj);
 }
 
 const std::vector<GameObject *> &Scene::getGameObjects()

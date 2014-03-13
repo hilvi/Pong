@@ -102,3 +102,11 @@ std::string GameObject::getName()
     return name;
 }
 
+GameObject *GameObject::getParent()
+{
+    return parent;
+}
+void GameObject::setParent(GameObject *p)
+{
+    parent = p;
+}

@@ -18,5 +18,5 @@ public:
     virtual void nextLevel() {};
     virtual void update(float deltaTime) {};
 
-    ~Scene(void);
+    virtual ~Scene(void);
 };

@@ -12,6 +12,8 @@
 #include "Component.h"
 #include "ShipAI.h"
 
+class ShipAI;
+
 class ShipSensor : public Component {
     ShipAI *ai;
 public:

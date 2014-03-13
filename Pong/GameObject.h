@@ -49,6 +49,9 @@ public:
     void addComponent(Component *comp);
     void addCollider(float width, float height);
     const std::vector<Component *> &getComponents();
+    
+    GameObject *getParent();
+    void setParent(GameObject *p);
 };
 
 #endif // GAMEOBJECT_H

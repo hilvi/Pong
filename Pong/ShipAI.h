@@ -12,14 +12,14 @@
 #include "Component.h"
 #include "Ship.h"
 #include "GameObject.h"
-#include "ShipSensor.h"
 
 class ShipAI : public Component {
 private:
-    ShipSensor *sensor;
+    Ship *ship;
 public:
-    ShipAI();
+    ShipAI(Ship *ship);
     void update(float deltaTime);
+    void init();
 };
 
 #endif /* defined(__engine__ShipAI__) */

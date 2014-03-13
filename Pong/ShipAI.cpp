@@ -7,13 +7,15 @@
 //
 
 #include "ShipAI.h"
+#include "ShipSensor.h"
 #include "Game.h"
 
+ShipAI::ShipAI(Ship *ship) : ship(ship) {
 
-ShipAI::ShipAI() {
-    GameObject *sensor = new GameObject("Sensor");
-    sensor->addComponent(new ShipSensor(this));
-    Game::getCurrentScene()->addObject(sensor);
+}
+
+void ShipAI::init() {
+    
 }
 
 void ShipAI::update(float deltaTime) {
