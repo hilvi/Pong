@@ -49,7 +49,6 @@ void Ship::update(float deltaTime)
     float width = Game::getWindow().getSize().x;
     float height = Game::getWindow().getSize().y;
 
-
     //Wrap around screen
     if(pos.x < 0)
         pos.x = width;
@@ -64,20 +63,8 @@ void Ship::update(float deltaTime)
         pos.y = 0;
 
     parent->setPosition(pos);
-
-
+    
     //Movement
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        parent->rotate(-rotateSpeed * deltaTime);
-
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        parent->rotate(rotateSpeed * deltaTime);
-
-    if(sf::Keyboard::isKeyPressed((sf::Keyboard::Up))) {
-        speed.x += acceleration * deltaTime * cos(parent->getRotation() * PI / 180);
-        speed.y += acceleration * deltaTime * sin(parent->getRotation() * PI / 180);
-    }
-
     sf::Vector2f dir = Math::normalize(speed);
 
     if(Math::magnitude(speed) > maxSpeed)
@@ -87,19 +74,30 @@ void Ship::update(float deltaTime)
 
     parent->move(speed);
 
-
     //Shooting
     coolDownTimer -= deltaTime;
+}
 
-    if(coolDownTimer < 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+void Ship::turn(float direction, float deltaTime)
+{
+    parent->rotate(direction * rotateSpeed * deltaTime);
+}
+
+void Ship::accelerate(float deltaTime) {
+    speed.x += acceleration * deltaTime * cos(parent->getRotation() * PI / 180);
+    speed.y += acceleration * deltaTime * sin(parent->getRotation() * PI / 180);
+}
+
+void Ship::shoot(float deltaTime) {
+    if(coolDownTimer < 0) {
         sf::Vector2f direction;
         direction.x = cos(parent->getRotation() * PI / 180);
         direction.y = sin(parent->getRotation() * PI / 180);
-
+        
         GameObject *bullet = new GameObject("Bullet");
         bullet->addComponent(new Bullet(direction));
         Game::getCurrentScene()->addObject(bullet);
-
+        
         bullet->setPosition(parent->getPosition());
         coolDownTimer = coolDown;
     }

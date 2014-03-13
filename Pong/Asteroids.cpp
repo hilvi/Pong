@@ -1,5 +1,6 @@
 #include "Asteroids.h"
 #include "Ship.h"
+#include "ShipInput.h"
 #include "Asteroid.h"
 #include "Game.h"
 #include "Math.h"
@@ -14,7 +15,9 @@ Asteroids::Asteroids(void)
     minDistance = 200;
 
     ship = new GameObject("Ship");
-    ship->addComponent(new Ship());
+    Ship *shipComp = new Ship();
+    ship->addComponent(shipComp);
+    ship->addComponent(new ShipInput(shipComp));
     ship->setPosition(300, 200);
     addObject(ship);
 }
