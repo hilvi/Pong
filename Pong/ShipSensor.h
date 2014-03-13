@@ -1,0 +1,22 @@
+//
+//  ShipSensor.h
+//  engine
+//
+//  Created by Erkki Parkkulainen on 13/03/14.
+//
+//
+
+#ifndef __engine__ShipSensor__
+#define __engine__ShipSensor__
+
+#include "Component.h"
+#include "ShipAI.h"
+
+class ShipSensor : public Component {
+    ShipAI *ai;
+public:
+    ShipSensor(ShipAI *ai);
+    void init();
+};
+
+#endif /* defined(__engine__ShipSensor__) */
