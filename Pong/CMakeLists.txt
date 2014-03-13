@@ -6,6 +6,8 @@ add_executable(engine Asteroid.cpp Bullet.cpp Math.cpp Ship.cpp Asteroids.cpp Br
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
+
+set(CMAKE_MODULE_PATH $(CMAKE_MODULE_PATH) "${CMAKE_SOURCE_DIR}/build")
 find_package(SFML REQUIRED COMPONENTS graphics window system)
 
 include_directories(${SFML_INCLUDE_DIRS})
