@@ -23,7 +23,7 @@ Asteroids::Asteroids(void)
     ship->addComponent(shipAI);
     ship->setPosition(300, 200);
     addObject(ship);
-    
+
     GameObject *sensor = new GameObject("Sensor", ship);
     sensor->addComponent(new ShipSensor(shipAI));
     addObject(sensor);

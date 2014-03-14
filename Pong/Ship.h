@@ -20,7 +20,7 @@ public:
     virtual void update(float deltaTime);
     virtual void init();
     virtual void onCollision(GameObject *collider);
-    
+
     void turn(float direction);
     void accelerate();
     void shoot();

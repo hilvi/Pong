@@ -6,6 +6,8 @@
 #include "Bullet.h"
 #include "Asteroids.h"
 
+#include <iostream>
+
 const float PI = 3.14159265358979f;
 
 Ship::Ship(void)
@@ -65,7 +67,7 @@ void Ship::update(float deltaTime)
         pos.y = 0;
 
     parent->setPosition(pos);
-    
+
     //Movement
     sf::Vector2f dir = Math::normalize(speed);
 
@@ -85,21 +87,23 @@ void Ship::turn(float direction)
     parent->rotate(direction * rotateSpeed * delta);
 }
 
-void Ship::accelerate() {
+void Ship::accelerate()
+{
     speed.x += acceleration * delta * cos(parent->getRotation() * PI / 180);
     speed.y += acceleration * delta * sin(parent->getRotation() * PI / 180);
 }
 
-void Ship::shoot() {
+void Ship::shoot()
+{
     if(coolDownTimer < 0) {
         sf::Vector2f direction;
         direction.x = cos(parent->getRotation() * PI / 180);
         direction.y = sin(parent->getRotation() * PI / 180);
-        
+
         GameObject *bullet = new GameObject("Bullet");
         bullet->addComponent(new Bullet(direction));
         Game::getCurrentScene()->addObject(bullet);
-        
+
         bullet->setPosition(parent->getPosition());
         coolDownTimer = coolDown;
     }

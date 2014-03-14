@@ -13,31 +13,40 @@
 
 #include <iostream>
 
-ShipAI::ShipAI(Ship *ship) : ship(ship) {
+ShipAI::ShipAI(Ship *ship) : ship(ship)
+{
 
 }
 
-void ShipAI::init() {
+void ShipAI::init()
+{
     avoiding = false;
     distanceToCurrent = 4096;
-    aiTimer = aiTimerTime = 1;
+    aiTimer = aiTimerTime = 0.5;
 }
 
-void ShipAI::update(float deltaTime) {
+void ShipAI::update(float deltaTime)
+{
     aiTimer -= deltaTime;
+
     if(aiTimer < 0) {
         if(avoiding) {
-            ship->accelerate();
+            //change action
             avoiding = false;
             distanceToCurrent = 4096;
         }
+
         aiTimer = aiTimerTime;
     }
-    ship->shoot();
+
+    if(avoiding)
+        ship->shoot();
 }
 
-void ShipAI::incoming(GameObject *asteroid) {
+void ShipAI::incoming(GameObject *asteroid)
+{
     sf::Vector2f distance = asteroid->getPosition() - parent->getPosition();
+
     if(avoiding) {
         if(Math::magnitude(distance) < distanceToCurrent) {
             distanceToCurrent = Math::magnitude(distance);
@@ -47,15 +56,18 @@ void ShipAI::incoming(GameObject *asteroid) {
         distanceToCurrent = Math::magnitude(distance);
         angleToCurrent = atan2f(distance.y, distance.x);
     }
-    
+
     avoiding = true;
+
     float angle = angleToCurrent * 180 / 3.14159;
+
     if(angle < 0) angle += 360;
+
     std::cout << angle << " : " << parent->getRotation() << std::endl;
 
     //parent->setRotation(angleToCurrent * 180 / 3.14159);
-    if(angle < parent->getRotation())
-        ship->turn(-1);
-    else
+    if(angle > parent->getRotation())
         ship->turn(1);
+    else
+        ship->turn(-1);
 }

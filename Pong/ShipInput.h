@@ -12,7 +12,8 @@
 #include "Component.h"
 #include "Ship.h"
 
-class ShipInput : public Component {
+class ShipInput : public Component
+{
 private:
     Ship *ship;
 public:

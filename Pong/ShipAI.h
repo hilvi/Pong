@@ -13,7 +13,8 @@
 #include "Ship.h"
 #include "GameObject.h"
 
-class ShipAI : public Component {
+class ShipAI : public Component
+{
 private:
     Ship *ship;
     bool avoiding;

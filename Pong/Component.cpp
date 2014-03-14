@@ -52,7 +52,8 @@ void Component::setParent(GameObject *parent)
     this->parent = parent;
 }
 
-GameObject *Component::getParent() {
+GameObject *Component::getParent()
+{
     return parent;
 }
 

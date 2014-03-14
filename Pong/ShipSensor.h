@@ -14,7 +14,8 @@
 
 class ShipAI;
 
-class ShipSensor : public Component {
+class ShipSensor : public Component
+{
     ShipAI *ai;
 public:
     ShipSensor(ShipAI *ai);
