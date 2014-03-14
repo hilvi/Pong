@@ -19,6 +19,8 @@ class ShipSensor : public Component {
 public:
     ShipSensor(ShipAI *ai);
     void init();
+    void onCollision(GameObject *other);
+    void update(float deltaTime);
 };
 
 #endif /* defined(__engine__ShipSensor__) */

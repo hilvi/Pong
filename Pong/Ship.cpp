@@ -41,10 +41,12 @@ void Ship::init()
     maxSpeed = 80;
     coolDown = 0.3f;
     coolDownTimer = 0;
+    delta = 0;
 }
 
 void Ship::update(float deltaTime)
 {
+    delta = deltaTime;
     sf::Vector2f pos = parent->getPosition();
     float width = Game::getWindow().getSize().x;
     float height = Game::getWindow().getSize().y;
@@ -78,17 +80,17 @@ void Ship::update(float deltaTime)
     coolDownTimer -= deltaTime;
 }
 
-void Ship::turn(float direction, float deltaTime)
+void Ship::turn(float direction)
 {
-    parent->rotate(direction * rotateSpeed * deltaTime);
+    parent->rotate(direction * rotateSpeed * delta);
 }
 
-void Ship::accelerate(float deltaTime) {
-    speed.x += acceleration * deltaTime * cos(parent->getRotation() * PI / 180);
-    speed.y += acceleration * deltaTime * sin(parent->getRotation() * PI / 180);
+void Ship::accelerate() {
+    speed.x += acceleration * delta * cos(parent->getRotation() * PI / 180);
+    speed.y += acceleration * delta * sin(parent->getRotation() * PI / 180);
 }
 
-void Ship::shoot(float deltaTime) {
+void Ship::shoot() {
     if(coolDownTimer < 0) {
         sf::Vector2f direction;
         direction.x = cos(parent->getRotation() * PI / 180);

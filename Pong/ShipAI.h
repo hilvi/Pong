@@ -16,10 +16,16 @@
 class ShipAI : public Component {
 private:
     Ship *ship;
+    bool avoiding;
+    float distanceToCurrent;
+    float angleToCurrent;
+    float aiTimer;
+    float aiTimerTime;
 public:
     ShipAI(Ship *ship);
     void update(float deltaTime);
     void init();
+    void incoming(GameObject *asteroid);
 };
 
 #endif /* defined(__engine__ShipAI__) */

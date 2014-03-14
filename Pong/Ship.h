@@ -5,6 +5,7 @@ class Ship : public Component
 {
 protected:
     float acceleration;
+    float delta;
     float rotateSpeed;
     float maxSpeed;
     float drag;
@@ -20,8 +21,8 @@ public:
     virtual void init();
     virtual void onCollision(GameObject *collider);
     
-    void turn(float direction, float deltaTime);
-    void accelerate(float deltaTime);
-    void shoot(float deltaTime);
+    void turn(float direction);
+    void accelerate();
+    void shoot();
 };
 

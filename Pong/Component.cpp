@@ -52,6 +52,10 @@ void Component::setParent(GameObject *parent)
     this->parent = parent;
 }
 
+GameObject *Component::getParent() {
+    return parent;
+}
+
 void Component::init()
 {
 

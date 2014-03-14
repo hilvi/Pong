@@ -21,7 +21,6 @@ Asteroids::Asteroids(void)
     ship->addComponent(shipComp);
     ShipAI *shipAI = new ShipAI(shipComp);
     ship->addComponent(shipAI);
-    
     ship->setPosition(300, 200);
     addObject(ship);
     

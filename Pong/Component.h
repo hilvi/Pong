@@ -35,6 +35,7 @@ public:
     virtual void onCollision(GameObject *collider);
     virtual void update(float deltatime);
     void setParent(GameObject *parent);
+    GameObject *getParent();
     float getWidth();
     float getHeight();
     std::string getName();
